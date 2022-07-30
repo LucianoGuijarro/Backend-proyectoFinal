@@ -24,6 +24,9 @@ const juego = mongoose.Schema({
     portada: {
         type: String,
         require: true
+    },
+    trailer: {
+        type: String,
     }
 });
 
