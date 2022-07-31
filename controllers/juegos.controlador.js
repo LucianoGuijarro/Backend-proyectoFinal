@@ -8,6 +8,16 @@ const verJuegos = async (req, res) => {
         res.status(400).json(error)
     }
 };
+const verJuegoDetalle = async (req, res) => {
+    try {
+        const {id} = req.params;
+        console.log(id)
+        const juego = await Juego.findById(id)
+        res.status(200).json(juego)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
 const verJuegosCategoria = async (req, res) => {
     try {
         const {categoria} = req.params;
@@ -28,7 +38,7 @@ const verTodosCategoria = async (req, res) => {
 };
 
 const agregarJuego = async (req, res) => {
-    const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada} = req.body;
+    const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada, trailer} = req.body;
     try {
         const juego = new Juego ({
             nombre: nombre,
@@ -36,7 +46,8 @@ const agregarJuego = async (req, res) => {
             fechaLanzamiento: fechaLanzamiento,
             categoria: categoria,
             precio: precio,
-            portada: portada
+            portada: portada,
+            trailer: trailer
         })
         const nuevoJuego = await juego.save();
         res.status(201).json('Juego agregado correctamente')
@@ -50,5 +61,6 @@ module.exports = {
     verJuegos,
     agregarJuego,
     verJuegosCategoria,
-    verTodosCategoria
+    verTodosCategoria,
+    verJuegoDetalle
 };
