@@ -13,8 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 app.use('/juegos', juegosRoute)
-
+app.use('/user', usersRoute)
 
 app.listen(port , () => {
     console.log(`Estamos escuchando al puerto ${port}`)
-});
+}); 
