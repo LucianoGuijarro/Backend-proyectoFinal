@@ -1,10 +1,12 @@
-const user = require('../Models/usersModel');
+const User = require('../Models/usersModel');
 
 const createNewUser = async (req, res) => {
-  const { userName, paswordUser, countryUser } = req.body;
+  const { userName, paswordUser,nickNameUser, countryUser } = req.body;
   try {
+    // console.log( req.body )
     const user = new User({
       userName: userName,
+      nickNameUser: nickNameUser,
       paswordUser: paswordUser,
       countryUser: countryUser
     })

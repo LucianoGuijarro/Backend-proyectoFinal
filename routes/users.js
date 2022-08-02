@@ -1,8 +1,16 @@
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express')
+const route = Router()
 const { createNewUser } = require('../controllers/usersController');
 
-router.post('/users', createNewUser )
+route.post('/', createNewUser )
 
-module.exports = router
+module.exports = route
 
+
+// const { Router } = require('express')
+// const route = Router()
+// const { getCowsRegister, createCowsRegister, deleteCowsRegister, patchCowsRegister} = require('../controllers/cowsController')
+
+// route.get('/' ,getCowsRegister)
+
+// route.post('/',createCowsRegister)

@@ -1,7 +1,7 @@
-require('dotenv').config();
-require('../db/conection');
 const express = require('express');
 const app = express();
+require('dotenv').config();
+require('../db/conection');
 const cors = require('cors');
 const morgan = require('morgan');
 const port = process.env.PORT;
@@ -18,4 +18,6 @@ app.use('/user', usersRoute)
 
 app.listen(port , () => {
     console.log(`Estamos escuchando al puerto ${port}`)
+
 }); 
+
