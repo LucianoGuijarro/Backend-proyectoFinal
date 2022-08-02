@@ -1,3 +1,4 @@
+const { restart } = require('nodemon');
 const Juego = require('../Models/juego.modelo');
 
 const verJuegos = async (req, res) => {
@@ -10,8 +11,7 @@ const verJuegos = async (req, res) => {
 };
 const verJuegoDetalle = async (req, res) => {
     try {
-        const {id} = req.params;
-        console.log(id)
+        const { id } = req.params;
         const juego = await Juego.findById(id)
         res.status(200).json(juego)
     } catch (error) {
@@ -20,8 +20,8 @@ const verJuegoDetalle = async (req, res) => {
 }
 const verJuegosCategoria = async (req, res) => {
     try {
-        const {categoria} = req.params;
-        const juegos = await Juego.find({categoria}).sort("nombre").limit(5)
+        const { categoria } = req.params;
+        const juegos = await Juego.find({ categoria }).sort("nombre").limit(5)
         res.status(200).json(juegos)
     } catch (error) {
         res.status(400).json(error)
@@ -29,8 +29,8 @@ const verJuegosCategoria = async (req, res) => {
 };
 const verTodosCategoria = async (req, res) => {
     try {
-        const {categoria} = req.params;
-        const juegos = await Juego.find({categoria}).sort("nombre")
+        const { categoria } = req.params;
+        const juegos = await Juego.find({ categoria }).sort("nombre")
         res.status(200).json(juegos)
     } catch (error) {
         res.status(400).json(error)
@@ -38,9 +38,9 @@ const verTodosCategoria = async (req, res) => {
 };
 
 const agregarJuego = async (req, res) => {
-    const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada, trailer} = req.body;
+    const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada, trailer } = req.body;
     try {
-        const juego = new Juego ({
+        const juego = new Juego({
             nombre: nombre,
             sinopsis: sinopsis,
             fechaLanzamiento: fechaLanzamiento,
@@ -54,7 +54,22 @@ const agregarJuego = async (req, res) => {
     } catch (error) {
         res.status(400).json(error)
     }
-}
+};
+
+const eliminarJuego = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const existeJuego = await Juego.findById(id);
+        if (existeJuego) {
+            res.status(200).json('Juego eliminado')
+            const resultado = await Juego.findByIdAndRemove(id);
+        } else {
+            return res.status(400).json('El juego no existe')
+        }
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+};
 
 
 module.exports = {
@@ -62,5 +77,6 @@ module.exports = {
     agregarJuego,
     verJuegosCategoria,
     verTodosCategoria,
-    verJuegoDetalle
+    verJuegoDetalle,
+    eliminarJuego
 };
