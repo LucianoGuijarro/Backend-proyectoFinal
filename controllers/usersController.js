@@ -9,7 +9,6 @@ const createNewUser = async (req, res) => {
       countryUser: countryUser
     })
     const newUser = await user.save();
-    res.status(201).json('Usuario creado correctamente')
   } catch (error) {
     res.status(400).json(error)
   }

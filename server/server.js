@@ -1,11 +1,12 @@
+require('dotenv').config();
+require('../db/conection');
 const express = require('express');
 const app = express();
-require('dotenv').config();
 const cors = require('cors');
 const morgan = require('morgan');
 const port = process.env.PORT;
 const juegosRoute = require('../routes/juegos');
-require('../db/conection');
+const usersRoute = require('../routes/users')
 
 
 
