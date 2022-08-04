@@ -1,7 +1,7 @@
 const User = require('../Models/usersModel');
 
 
-const login = async (req, res) => {
+const loginController = async (req, res) => {
   const { correoUser, passwordUser } = req.body
   // verificando si existe el usuario en la base de datos
   const user = await User.findOne( {correoUser} )
@@ -23,5 +23,5 @@ const login = async (req, res) => {
 }
 
 module.exports = {
-  login
+  loginController
 }
