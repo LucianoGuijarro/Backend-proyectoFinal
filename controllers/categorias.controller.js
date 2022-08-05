@@ -21,8 +21,24 @@ const agregarCategoria = async (req, res) => {
         res.status(400).json(error)
     }
 };
+const eliminarCategoria = async (req, res) => {
+    const { id } = req.params;
+    console.log(id)
+    try {
+        const existeCategoria = await Categoria.findById(id);
+        if (existeCategoria) {
+            res.status(200).json('Categoria eliminada')
+            const resultado = await Categoria.findByIdAndRemove(id);
+        } else {
+            return res.status(400).json('La categoria no existe')
+        }
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+}
 
 module.exports = {
     agregarCategoria,
-    verCategorias
+    verCategorias,
+    eliminarCategoria
 }
