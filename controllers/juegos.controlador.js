@@ -36,6 +36,14 @@ const verTodosCategoria = async (req, res) => {
         res.status(400).json(error)
     }
 };
+const verDestacados = async (req, res) => {
+    try {
+        const juegos = await Juego.find(destacado).sort('nombre');
+        res.status(200).json(juegos)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
 
 const agregarJuego = async (req, res) => {
     const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada, trailer } = req.body;
@@ -78,5 +86,6 @@ module.exports = {
     verJuegosCategoria,
     verTodosCategoria,
     verJuegoDetalle,
-    eliminarJuego
+    eliminarJuego,
+    verDestacados
 };

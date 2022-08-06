@@ -27,7 +27,11 @@ const juego = mongoose.Schema({
     },
     trailer: {
         type: String,
+    },
+    destacado: {
+        type: Boolean
     }
+
 });
 
 module.exports = mongoose.model('juego', juego);
