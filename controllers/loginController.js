@@ -1,6 +1,8 @@
 const User = require('../Models/usersModel');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+// const { LocalStorage } = require('node-localstorage');
+
 
 const loginController = async (req, res) => {
   const { correoUser, passwordUser } = req.body
@@ -8,15 +10,13 @@ const loginController = async (req, res) => {
 
   const user = await User.findOne( {correoUser})
   // console.log(emailUser);
-  // console.log(user)
+  console.log(user.nickNameUser)
 
   if(user == null){
     return res.status(401).json("El usuario no existe")
   }
-
   const match = bcrypt.compareSync(passwordUser, user.passwordUser)
   console.log(match)
-
     
   try {
     if (match) {
@@ -29,16 +29,12 @@ const loginController = async (req, res) => {
       const token = jwt.sign(payload, process.env.SECRET,{
         expiresIn: "2 days"
       })
-      
-      return res.status(200).json({msg:"Usuario Logeado", token: token})
+
+      return res.status(200).json({msg:"Usuario Logeado", token: token, nickName: user.nickNameUser})
     } else {
       return res.status(401).json("Usuario o contraseña incorrecta")
     }
-    // if(passwordUser === user.passwordUser){
-    //   return res.status(200).json("logeado con exito")
-    // }else {
-    //  return  res.status(401).json("Datos incorrectos")
-    // }
+
   } catch (error) {
     console.log(error)
   }
