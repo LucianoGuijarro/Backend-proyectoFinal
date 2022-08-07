@@ -79,6 +79,20 @@ const eliminarJuego = async (req, res) => {
     }
 };
 
+const editarJuego = async (req, res) => {
+    const { id, precio, portada, trailer } = req.params;
+    try {
+        const juegoEditado = Juego.findByIdAndUpdate(id, {
+            precio: precio,
+            portada: portada,
+            trailer: trailer
+        })
+        res.status(200).json(juegoEditado)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+};
+
 
 module.exports = {
     verJuegos,
@@ -87,5 +101,6 @@ module.exports = {
     verTodosCategoria,
     verJuegoDetalle,
     eliminarJuego,
-    verDestacados
+    verDestacados,
+    editarJuego
 };
