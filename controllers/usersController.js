@@ -46,7 +46,7 @@ const getUserById = ()=>{}
 const eliminarUsuario = async (req, res) => {
   const { id } = req.params
   try {
-    const existeUsuario = User.findById(id);
+    const existeUsuario = await User.findById(id);
     if(existeUsuario) {
       res.status(200).json('Usuario eliminado')
       const resultado = await User.findByIdAndRemove(id)
