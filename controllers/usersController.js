@@ -34,7 +34,7 @@ const createNewUser = async (req, res) => {
 
 const verTodos = async (req, res) => {
   try {
-    const usuarios = User.find({}).sort('nombre')
+    const usuarios = await User.find({}).sort('nombre')
     res.status(200).json(usuarios)
   } catch (error) {
     res.status(400).json(error)
