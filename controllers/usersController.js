@@ -56,10 +56,11 @@ const eliminarUsuario = async (req, res) => {
   } catch (error) {
     res.status(400).json(error)
   }
-}
+};
 
 module.exports = {
   createNewUser,
   verTodos,
-  getUserById
+  getUserById,
+  eliminarUsuario
 }
