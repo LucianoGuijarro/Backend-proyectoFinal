@@ -9,6 +9,7 @@ const juegosRoute = require('../routes/juegos');
 const usersRoute = require('../routes/users')
 const loginRoute = require('../routes/login')
 const categoriasRoute = require ('../routes/categorias.js');
+const comentariosRoute = require ('../routes/comentarios.js');
 require('../db/conection');
 
 
@@ -20,6 +21,7 @@ app.use('/juegos', juegosRoute)
 app.use('/users', usersRoute)
 app.use('/login', loginRoute)
 app.use('/categorias', categoriasRoute)
+app.use('/comentarios', comentariosRoute)
 
 
 app.listen(port , () => {

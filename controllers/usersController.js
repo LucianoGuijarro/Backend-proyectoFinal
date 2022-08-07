@@ -7,8 +7,9 @@ const createNewUser = async (req, res) => {
 
   const errors = validationResult(req)
 
-  if(errors.isEmpty()){
+  if(!errors.isEmpty()){
     return res.status(400).json({errors: errors.array()})
+    // return res.status(400).json('Este mail ya se encuentra en uso')
   }
 
   try {
@@ -31,14 +32,19 @@ const createNewUser = async (req, res) => {
   }
 }
 
-const getAllUsers =()=>{
-
+const verTodos = async (req, res) => {
+  try {
+    const usuarios = await User.find({}).sort('nombre')
+    res.status(200).json(usuarios)
+  } catch (error) {
+    res.status(400).json(error)
+  }
 }
 
 const getUserById = ()=>{}
 
 module.exports = {
   createNewUser,
-  getAllUsers,
+  verTodos,
   getUserById
 }
