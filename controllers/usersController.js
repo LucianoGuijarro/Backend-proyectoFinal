@@ -43,6 +43,21 @@ const verTodos = async (req, res) => {
 
 const getUserById = ()=>{}
 
+const eliminarUsuario = async (req, res) => {
+  const { id } = req.params
+  try {
+    const existeUsuario = User.findById(id);
+    if(existeUsuario) {
+      res.status(200).json('Usuario eliminado')
+      const resultado = await User.findByIdAndRemove(id)
+    } else{
+      res.status(400).json('El usuario no existe')
+    }
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
+
 module.exports = {
   createNewUser,
   verTodos,
