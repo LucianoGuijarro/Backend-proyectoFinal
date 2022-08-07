@@ -38,7 +38,7 @@ const verTodosCategoria = async (req, res) => {
 };
 const verDestacados = async (req, res) => {
     try {
-        const juegos = await Juego.find(destacado).sort('nombre');
+        const juegos = await Juego.find({destacado});
         res.status(200).json(juegos)
     } catch (error) {
         res.status(400).json(error)

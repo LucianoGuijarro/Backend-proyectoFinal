@@ -4,7 +4,7 @@ const { createNewUser, getAllUsers, getUserById } = require('../controllers/user
 const { body } = require('express-validator')
 const { emailExist } = require('../Helpers/validation')
 
-route.post('/',
+route.post('/agregarUsuario',
 body('correoUser').not().isEmpty().withMessage("El Email es Requerido").isEmail().withMessage("Ingrese un correo valido").custom(emailExist),
  createNewUser )
 

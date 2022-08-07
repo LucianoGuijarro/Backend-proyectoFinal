@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { verJuegos, agregarJuego, verTodosCategoria, verJuegosCategoria, verJuegoDetalle, eliminarJuego } = require('../controllers/juegos.controlador');
+const { verJuegos, agregarJuego, verTodosCategoria, verJuegosCategoria, verJuegoDetalle, eliminarJuego, verDestacados } = require('../controllers/juegos.controlador');
 
 
 router.get('/verJuegos', verJuegos);
-router.get('/verJuego/:id', verJuegoDetalle)
+router.get('/verJuego/:id', verJuegoDetalle);
+router.get('/verDestacados', verDestacados);
 router.get('/verJuegos/:categoria', verJuegosCategoria);
 router.get('/verTodos/:categoria', verTodosCategoria);
 // router.get('/verJuegos/carreas', verJuegosCarreras);

@@ -29,7 +29,8 @@ const juego = mongoose.Schema({
         type: String,
     },
     destacado: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 
 });
