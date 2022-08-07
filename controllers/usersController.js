@@ -32,14 +32,19 @@ const createNewUser = async (req, res) => {
   }
 }
 
-const getAllUsers =()=>{
-
+const verTodos = async (req, res) => {
+  try {
+    const usuarios = User.find({}).sort('nombre')
+    res.status(200).json(usuarios)
+  } catch (error) {
+    res.status(400).json(error)
+  }
 }
 
 const getUserById = ()=>{}
 
 module.exports = {
   createNewUser,
-  getAllUsers,
+  verTodos,
   getUserById
 }
