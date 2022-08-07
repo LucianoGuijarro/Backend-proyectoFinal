@@ -15,6 +15,10 @@ const User = mongoose.Schema({
     },
     countryUser:{
         type: String
+    },
+    rol: {
+        type: String,
+        default: "usuario"
     }
 });
 
