@@ -10,7 +10,7 @@ const loginController = async (req, res) => {
 
   const user = await User.findOne( {correoUser})
   // console.log(emailUser);
-  console.log(user.nickNameUser)
+  // console.log(user.nickNameUser)
 
   if(user == null){
     return res.status(401).json("El usuario no existe")
