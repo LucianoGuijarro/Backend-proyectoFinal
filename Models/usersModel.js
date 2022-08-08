@@ -19,6 +19,10 @@ const User = mongoose.Schema({
     rol: {
         type: String,
         default: "usuario"
+    },
+    suspendido: {
+        type: Boolean,
+        default: false
     }
 });
 
