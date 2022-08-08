@@ -38,7 +38,7 @@ const verTodosCategoria = async (req, res) => {
 };
 const verDestacados = async (req, res) => {
     try {
-        const juegos = await Juego.find({destacado});
+        const juegos = await Juego.find({destacado: true});
         res.status(200).json(juegos)
     } catch (error) {
         res.status(400).json(error)
@@ -81,12 +81,13 @@ const eliminarJuego = async (req, res) => {
 
 const editarJuego = async (req, res) => {
     const { id } = req.params;
-    const { precio, portada, trailer} = req.body
+    const { precio, portada, trailer, destacado} = req.body
     try {
         const juegoEditado = await Juego.findByIdAndUpdate(id, {
             precio: precio,
             portada: portada,
-            trailer: trailer
+            trailer: trailer,
+            destacado: destacado
         })
         res.status(200).json(juegoEditado)
     } catch (error) {
