@@ -23,7 +23,7 @@ const juego = mongoose.Schema({
     },
     portada: {
         type: String,
-        require: true
+        required: true
     },
     trailer: {
         type: String,
@@ -31,6 +31,10 @@ const juego = mongoose.Schema({
     destacado: {
         type: Boolean,
         default: false
+    },
+    slider: {
+        type: String,
+        required: true
     }
 
 });
