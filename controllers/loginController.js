@@ -1,6 +1,7 @@
 const User = require('../Models/usersModel');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { validationResult } = require('express-validator')
 // const { LocalStorage } = require('node-localstorage');
 
 
@@ -11,7 +12,10 @@ const loginController = async (req, res) => {
   const user = await User.findOne( {correoUser})
   // console.log(emailUser);
   console.log(user.nickNameUser)
-
+  if(!errors.isEmpty()){
+    return res.status(400).json({errors: errors.array()})
+    // return res.status(400).json('Este mail ya se encuentra en uso')
+  }
   if(user == null){
     return res.status(401).json("El usuario no existe")
   }
