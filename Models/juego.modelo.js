@@ -3,23 +3,23 @@ const mongoose = require('mongoose');
 const juego = mongoose.Schema({
     nombre: {
         type: String,
-        require: true
+        required: true
     },
     sinopsis: {
         type: String,
-        require: true
+        required: true
     },
     fechaLanzamiento: {
         type: String,
-        require: true
+        required: true
     },
     categoria: {
         type: String,
-        require: true
+        required: true
     },
     precio: {
         type: Number,
-        require: true
+        required: true
     },
     portada: {
         type: String,
