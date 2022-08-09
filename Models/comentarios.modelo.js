@@ -3,15 +3,16 @@ const mongoose = require('mongoose');
 const Comentario = mongoose.Schema({
     Usuario: {
         type: String,
-        require: true
+        required: true
     },
     JuegoPerteneciente: {
-        type: String,
-        require: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'juego',
+        required: true
     },
     Contenido: {
         type: String,
-        require: true
+        required: true
     }
 });
 
