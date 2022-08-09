@@ -81,9 +81,11 @@ const eliminarJuego = async (req, res) => {
 
 const editarJuego = async (req, res) => {
     const { id } = req.params;
-    const { precio, portada, trailer, destacado} = req.body
+    const { precio, portada, trailer, destacado, nombre, categoria} = req.body
     try {
         const juegoEditado = await Juego.findByIdAndUpdate(id, {
+            nombre: nombre,
+            categoria: categoria,
             precio: precio,
             portada: portada,
             trailer: trailer,
