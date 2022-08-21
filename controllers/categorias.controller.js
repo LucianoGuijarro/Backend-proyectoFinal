@@ -23,7 +23,6 @@ const agregarCategoria = async (req, res) => {
 };
 const eliminarCategoria = async (req, res) => {
     const { id } = req.params;
-    console.log(id)
     try {
         const existeCategoria = await Categoria.findById(id);
         if (existeCategoria) {

@@ -42,6 +42,18 @@ const verTodos = async (req, res) => {
 }
 
 const getUserById = ()=>{}
+const editarUsuario = async (req, res) => {
+  const { id } = req.params;
+  const { suspendido } = req.body;
+  try {
+    const usuarioEditado = await User.findByIdAndUpdate(id, {
+      suspendido: suspendido
+    })
+    res.status(200).json(usuarioEditado)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
 
 const eliminarUsuario = async (req, res) => {
   const { id } = req.params
@@ -62,5 +74,6 @@ module.exports = {
   createNewUser,
   verTodos,
   getUserById,
-  eliminarUsuario
+  eliminarUsuario,
+  editarUsuario
 }
