@@ -11,7 +11,7 @@ body('passwordUser').not().isEmpty().withMessage('Este campo no puede estar vaci
 
  route.get('/verTodos', verTodos);
  route.delete('/eliminarUsuario/:id', eliminarUsuario)
- route.patch('editarUsuario/:id', editarUsuario)
+ route.patch('/editarUsuario/:id', editarUsuario)
 
 // route.get('/', getAllUsers)
 

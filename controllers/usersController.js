@@ -44,7 +44,9 @@ const verTodos = async (req, res) => {
 const getUserById = ()=>{}
 const editarUsuario = async (req, res) => {
   const { id } = req.params;
+  console.log(id)
   const { suspendido } = req.body;
+  console.log(suspendido)
   try {
     const usuarioEditado = await User.findByIdAndUpdate(id, {
       suspendido: suspendido
