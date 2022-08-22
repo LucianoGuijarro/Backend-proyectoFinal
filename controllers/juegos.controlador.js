@@ -38,7 +38,7 @@ const verTodosCategoria = async (req, res) => {
 };
 const verDestacados = async (req, res) => {
     try {
-        const juegos = await Juego.find({destacado});
+        const juegos = await Juego.find({destacado: true});
         res.status(200).json(juegos)
     } catch (error) {
         res.status(400).json(error)
@@ -46,7 +46,7 @@ const verDestacados = async (req, res) => {
 }
 
 const agregarJuego = async (req, res) => {
-    const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada, trailer } = req.body;
+    const { nombre, sinopsis, fechaLanzamiento, categoria, precio, portada, trailer, slider } = req.body;
     try {
         const juego = new Juego({
             nombre: nombre,
@@ -55,7 +55,8 @@ const agregarJuego = async (req, res) => {
             categoria: categoria,
             precio: precio,
             portada: portada,
-            trailer: trailer
+            trailer: trailer,
+            slider: slider
         })
         const nuevoJuego = await juego.save();
         res.status(201).json('Juego agregado correctamente')
@@ -80,12 +81,17 @@ const eliminarJuego = async (req, res) => {
 };
 
 const editarJuego = async (req, res) => {
-    const { id, precio, portada, trailer } = req.params;
+    const { id } = req.params;
+    const { precio, portada, trailer, destacado, nombre, categoria, slider} = req.body
     try {
-        const juegoEditado = Juego.findByIdAndUpdate(id, {
+        const juegoEditado = await Juego.findByIdAndUpdate(id, {
+            nombre: nombre,
+            categoria: categoria,
             precio: precio,
             portada: portada,
-            trailer: trailer
+            trailer: trailer,
+            destacado: destacado,
+            slider: slider
         })
         res.status(200).json(juegoEditado)
     } catch (error) {

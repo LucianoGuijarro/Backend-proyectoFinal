@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const User = mongoose.Schema({
     correoUser:{
         type: String,
-        require: true
+        required: true
     },
     nickNameUser:{
         type:String,
-        require:true
+        required: true
     },
     passwordUser:{
         type: String,
-        require:true
+        required: true
     },
     countryUser:{
         type: String
@@ -19,6 +19,10 @@ const User = mongoose.Schema({
     rol: {
         type: String,
         default: "usuario"
+    },
+    suspendido: {
+        type: Boolean,
+        default: false
     }
 });
 

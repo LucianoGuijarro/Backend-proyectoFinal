@@ -10,6 +10,15 @@ const emailExist = async (correoUser) =>{
     return false
 }
 
+const userSuspendido = async (correoUser) => {
+    const user = await User.findOne({correoUser})
+    if (user.suspendido) {
+        throw new Error ('Este usuario esta baneado')
+    }
+    return false
+}
+
 module.exports = {
-    emailExist
+    emailExist,
+    userSuspendido
 }

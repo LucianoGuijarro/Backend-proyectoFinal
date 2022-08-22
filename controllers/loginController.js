@@ -1,6 +1,7 @@
 const User = require('../Models/usersModel');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { validationResult } = require('express-validator')
 // const { LocalStorage } = require('node-localstorage');
 
 
@@ -8,7 +9,8 @@ const loginController = async (req, res) => {
   const { correoUser, passwordUser } = req.body
   // verificando si existe el usuario en la base de datos
   const user = await User.findOne( {correoUser})
-  console.log(emailUser);
+
+  console.log(correoUser);
   // console.log(user.nickNameUser)
 
   if(user == null){
