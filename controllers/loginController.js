@@ -7,13 +7,12 @@ const jwt = require('jsonwebtoken')
 const loginController = async (req, res) => {
   const { correoUser, passwordUser } = req.body
   // verificando si existe el usuario en la base de datos
-
   const user = await User.findOne( {correoUser})
-  // console.log(emailUser);
+  console.log(emailUser);
   // console.log(user.nickNameUser)
 
   if(user == null){
-    return res.status(401).json("El usuario no existe")
+    return res.status(400).json("El usuario no existe")
   }
   const match = bcrypt.compareSync(passwordUser, user.passwordUser)
   console.log(match)
