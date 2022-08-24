@@ -8,16 +8,13 @@ const { validationResult } = require('express-validator')
 const loginController = async (req, res) => {
   const { correoUser, passwordUser } = req.body
   // verificando si existe el usuario en la base de datos
-
   const user = await User.findOne( {correoUser})
-  // console.log(emailUser);
-  const errors = validationResult(req)
-  if(!errors.isEmpty()){
-    return res.status(400).json({errors: errors.array()})
-    // return res.status(400).json('Este mail ya se encuentra en uso')
-  }
+
+  console.log(correoUser);
+  // console.log(user.nickNameUser)
+
   if(user == null){
-    return res.status(401).json("El usuario no existe")
+    return res.status(400).json("El usuario no existe")
   }
   const match = bcrypt.compareSync(passwordUser, user.passwordUser)
   console.log(match)
