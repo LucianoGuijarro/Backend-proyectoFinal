@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const route = Router()
-const { createNewUser, verTodos, getUserById, editarUsuario, eliminarUsuario } = require('../controllers/usersController');
+const { ensureUser } = require('../middleware/ensureUser');
+const { createNewUser, verTodos, editarUsuario, eliminarUsuario } = require('../controllers/usersController');
 const { body } = require('express-validator')
 const { emailExist } = require('../Helpers/validation')
 
@@ -10,8 +11,8 @@ body('passwordUser').not().isEmpty().withMessage('Este campo no puede estar vaci
  createNewUser )
 
  route.get('/verTodos', verTodos);
- route.delete('/eliminarUsuario/:id', eliminarUsuario)
- route.patch('/editarUsuario/:id', editarUsuario)
+ route.delete('/eliminarUsuario/:id', ensureUser, eliminarUsuario)
+ route.patch('/editarUsuario/:id', ensureUser, editarUsuario)
 
 // route.get('/', getAllUsers)
 
