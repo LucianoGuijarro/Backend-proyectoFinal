@@ -30,7 +30,7 @@ const loginController = async (req, res) => {
         rol: user.rol
       }
       const token = jwt.sign(payload, process.env.SECRET, {
-        expiresIn: 30
+        expiresIn: 86400
       })
 
       return res.status(200).json({ msg: "Usuario Logeado", token: token, nickName: user.nickNameUser, rol: user.rol })
