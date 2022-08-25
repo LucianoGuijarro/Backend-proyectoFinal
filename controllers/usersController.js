@@ -9,11 +9,10 @@ const createNewUser = async (req, res) => {
 
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() })
-    // return res.status(400).json('Este mail ya se encuentra en uso')
   }
 
   try {
-    // console.log( req.body )
+
     const user = new User({
       correoUser: correoUser,
       nickNameUser: nickNameUser,

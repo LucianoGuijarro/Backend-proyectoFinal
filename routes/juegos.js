@@ -10,8 +10,8 @@ router.get('/verDestacados', verDestacados);
 router.get('/verJuegos/:categoria', verJuegosCategoria);
 router.get('/verTodos/:categoria', verTodosCategoria);
 router.post('/agregarJuego', ensureUser, agregarJuego);
-router.delete('/eliminarJuego/:id', eliminarJuego);
-router.patch('/editarJuego/:id', editarJuego);
+router.delete('/eliminarJuego/:id', ensureUser, eliminarJuego);
+router.patch('/editarJuego/:id', ensureUser, editarJuego);
 
 
 

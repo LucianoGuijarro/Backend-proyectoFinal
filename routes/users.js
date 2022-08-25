@@ -14,8 +14,5 @@ body('passwordUser').not().isEmpty().withMessage('Este campo no puede estar vaci
  route.delete('/eliminarUsuario/:id', ensureUser, eliminarUsuario)
  route.patch('/editarUsuario/:id', ensureUser, editarUsuario)
 
-// route.get('/', getAllUsers)
-
-// route.get('/:id', getUserById)
 
 module.exports = route

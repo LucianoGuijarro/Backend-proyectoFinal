@@ -1,5 +1,6 @@
-//validacion para ve si el usuario existe
+//validacion para ver si el usuario existe
 const User = require('../Models/usersModel')
+const Categoria = require ('../Models/categorias.modelo')
 
 const emailExist = async (correoUser) =>{
     const userExist = await User.findOne({correoUser})
@@ -8,6 +9,13 @@ const emailExist = async (correoUser) =>{
         throw new Error("El email ya se encuentra registrado")
     }
     return false
+}
+
+const categoriaExiste = async (categoria) => {
+    const categoriaExist = await Categoria.findOne({categoria})
+    if(categoriaExiste){
+        throw new Error ('La categoria ya existe')
+    }
 }
 
 const userSuspendido = async (correoUser) => {
@@ -20,5 +28,6 @@ const userSuspendido = async (correoUser) => {
 
 module.exports = {
     emailExist,
-    userSuspendido
+    userSuspendido,
+    categoriaExiste
 }
