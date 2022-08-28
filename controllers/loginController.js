@@ -35,7 +35,7 @@ const loginController = async (req, res) => {
 
       return res.status(200).json({ msg: "Usuario Logeado", token: token, nickName: user.nickNameUser, rol: user.rol })
     } else {
-      return res.status(401).json("Usuario o contraseña incorrecta")
+      return res.status(400).json("Usuario o contraseña incorrecta")
     }
 
   } catch (error) {
