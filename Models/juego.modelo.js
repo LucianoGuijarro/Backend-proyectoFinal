@@ -35,8 +35,11 @@ const juego = mongoose.Schema({
     slider: {
         type: String,
         required: true
+    },
+    paginaCompra: {
+        type: String,
+        required: true
     }
-
 });
 
 module.exports = mongoose.model('juego', juego);
