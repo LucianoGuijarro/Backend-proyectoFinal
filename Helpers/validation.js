@@ -12,9 +12,7 @@ const emailExist = async (correoUser) =>{
 }
 
 const categoriaExiste = async (nombre) => {
-    console.log(categoria)
     const categoriaExist = await categoria.findOne({nombre})
-    console.log(categoriaExist)
     if(categoriaExist){
         throw new Error ('La categoria ya existe')
     }

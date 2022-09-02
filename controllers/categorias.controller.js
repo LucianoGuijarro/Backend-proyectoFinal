@@ -24,7 +24,6 @@ const agregarCategoria = async (req, res) => {
         res.status(201).json('La categoria se ha creado exitosamente')
     } catch (error) {
         res.status(400).json(error)
-        console.log(error)
     }
 };
 const eliminarCategoria = async (req, res) => {
