@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+const { model, Schema } = require('mongoose');
 
-const juego = mongoose.Schema({
+
+const juego = Schema({
     nombre: {
         type: String,
         required: true
@@ -42,4 +43,4 @@ const juego = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('juego', juego);
+module.exports = model('juego', juego);
