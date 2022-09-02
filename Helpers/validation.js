@@ -1,6 +1,6 @@
 //validacion para ver si el usuario existe
 const User = require('../Models/usersModel')
-const Categoria = require ('../Models/categorias.modelo')
+const categoria = require ('../Models/categorias.modelo')
 
 const emailExist = async (correoUser) =>{
     const userExist = await User.findOne({correoUser})
@@ -11,8 +11,10 @@ const emailExist = async (correoUser) =>{
     return false
 }
 
-const categoriaExiste = async (categoria) => {
-    const categoriaExist = await Categoria.findOne({categoria})
+const categoriaExiste = async (nombre) => {
+    console.log(categoria)
+    const categoriaExist = await categoria.findOne({nombre})
+    console.log(categoriaExist)
     if(categoriaExist){
         throw new Error ('La categoria ya existe')
     }
