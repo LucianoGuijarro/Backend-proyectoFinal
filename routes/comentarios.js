@@ -5,6 +5,6 @@ const { ensureUser } = require('../middleware/ensureUser');
 
 router.post('/agregarComentario', agregarComentario)
 router.get('/verComentariosPorJuego/:juegoPerteneciente', verComentariosPorJuego)
-router.delete('/eliminarComentario',ensureUser, eliminarComentario )
+router.delete('/eliminarComentario/:id',ensureUser, eliminarComentario )
 
 module.exports = router;
