@@ -1,4 +1,3 @@
-//validacion para ver si el usuario existe
 const User = require('../Models/usersModel')
 const categoria = require ('../Models/categorias.modelo')
 
